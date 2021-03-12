@@ -1,5 +1,5 @@
 <div class="row d-flex justify-content-around">
-  <% Object.keys(data).map(el => { %>
+  <% Object.keys(data).forEach(el => { %>
     <div class="card" style="width: 18rem;">
       <h5 class="card-title"><%= el %> </h5>
       <h6 class="card-subtitle mb-2 text-muted">Total Entities</h6>
@@ -7,5 +7,5 @@
         <%=data[el]%> 
       </p>
     </div>
-  <% }) %> 
+  <% }) %>
 </div>
