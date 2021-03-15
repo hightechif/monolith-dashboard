@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "fadhil",
+    "password": "passwordpalingsusah",
+    "database": "monolith_dashboard_ch08",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "fadhil",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "fadhil",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
