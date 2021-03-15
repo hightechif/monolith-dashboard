@@ -1,5 +1,6 @@
 const moment = require('moment');
 const { Article } = require('../models')
+const sequelize = require('sequelize');
 
 // const posts = [
 //   {
@@ -16,12 +17,28 @@ const { Article } = require('../models')
 //   }
 // ]
 
-const home = (req, res) => {
+const home = async (req, res) => {
+  let postCounter;
+  let readerCounter;
+
+  try {
+    postCounter = await Article.count();
+    readerCounter = await Article.findAll({
+      attributes: [
+        [sequelize.fn('sum', sequelize.col('read_count')),
+        'totalReader']
+      ]
+    })
+    console.log(readerCounter);
+  } catch (error) {
+    return res.render('pages/default/error');
+  }
+
   const locals = {
     data: {
-      Post: 10,
-      Visitor: 100,
-      Reader: 10
+      Post: postCounter,
+      Visitor: readerCounter[0].dataValues.totalReader,
+      Reader: readerCounter[0].dataValues.totalReader
     },
     contentTitle: "Statistic",
     layout: 'layouts/dashboard'
